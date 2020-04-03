@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Is The ToDo Page</title>
+</head>
+
+<!-- Note: The for-loop below states for each "todo_item" in "all_items", create a 'li'(tag). The content of this tag
+will be 'todo_item.content' -->
+
+<body>
+    <h1>My ToDo Page</h1>
+
+    <ul>
+        {% for todo_item in all_items %}
+        <li>{{ todo_item.content }}
+            <form action="/deleteTodo/{{todo_item.id}}/" style="display: inline;" method="post">{%csrf_token%}
+                <input type="submit" value="Delete" />
+            </form>
+        </li>
+        {%endfor%}
+
+    </ul>
+    <form action="/addTodo/" method="post">
+        {%csrf_token%}
+        <input type="text" name="content" />
+        <input type="submit" value="Add" />
+    </form>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
